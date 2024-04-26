@@ -21,7 +21,7 @@ body {
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .left {
@@ -31,16 +31,20 @@ body {
   height: 100vh;
 }
 
+#user-svg {
+  width: 18px;
+  height: auto;
+}
 .user {
   line-height: 30px;
-  display: block;
+  display: flex;
 }
 .user:hover {
   background-color: #82d1ff;
   cursor: pointer;
 }
 .user > * {
-  padding-inline: 15px;
+  padding-left: 15px;
 }
 .user-name {
   font-size: 16px;
@@ -49,7 +53,7 @@ body {
 }
 
 .right {
-  width: 65%;
+  min-width: 65%;
 }
 
 .user-header {
@@ -102,8 +106,6 @@ input[class="user-name-input"] {
   width: 300px;
   border: 2px solid #3b94fa;
   outline: none;
-}
-input[class="user-name-input"]:focus {
 }
 
 button {

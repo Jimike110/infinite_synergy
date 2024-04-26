@@ -13,7 +13,7 @@ function App() {
   }, []);
 
   const fetchUserData = () => {
-    fetch("http://localhost:3001/api/users")
+    fetch("https://legendary-barnacle-9rq6jr9pg7qcx4x4-3001.app.github.dev/api/users")
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error('Error fetching user data:', error));
@@ -28,7 +28,7 @@ function App() {
       user.id === updatedUser.id ? updatedUser : user
     );
 
-    fetch("http://localhost:3001/api/users", {
+    fetch("https://legendary-barnacle-9rq6jr9pg7qcx4x4-3001.app.github.dev/api/users", {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="left">
-          <UserList users={users} onSelectUser={handleSelectUser} />
+          <UserList users={users} onSelectUser={handleSelectUser} selectedUser={selectedUser} />
         </div>
         <div className="right">
           <UserDataForm
