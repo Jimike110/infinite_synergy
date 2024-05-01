@@ -30,6 +30,31 @@ body {
   border: 1px solid black;
   height: 100vh;
 }
+.list-and-pagination {
+  display: flex;
+  flex-direction: column;
+}
+.user-list {
+  padding: 10px 0;
+}
+.pagination-buttons {
+  padding: 10px 0;
+  position: sticky;
+  bottom: 0;
+  height: 40px;
+  display: flex !important;
+  z-index: 999;
+  justify-content: space-evenly;
+  background-color: white;
+  align-items: center;
+}
+.paginate-button {
+  padding: 6px;
+  font-size: large;
+  cursor: pointer;
+  border: none;
+  width: 150px;
+}
 
 #user-svg {
   width: 18px;
@@ -53,6 +78,7 @@ body {
 }
 
 .right {
+  overflow: hidden;
   min-width: 65%;
 }
 
@@ -88,6 +114,8 @@ form > span {
 
 label {
   width: 110px;
+  color: grey;
+  font-weight: 600;
 }
 
 input {
@@ -95,6 +123,7 @@ input {
   border: 1px solid rgba(0, 0, 0, 0.178);
   border-radius: 0;
   width: 500px;
+  font-weight: 500;
   padding: 3px;
 }
 input:focus {
@@ -108,7 +137,7 @@ input[class="user-name-input"] {
   outline: none;
 }
 
-button {
+#save-button {
   position: absolute;
   bottom: 30px;
   right: 30px;
@@ -118,4 +147,13 @@ button {
   cursor: pointer;
   border: none;
   width: 100px;
+}
+
+.loader, .no-data {
+  font-size: 26px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }

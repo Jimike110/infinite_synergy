@@ -11,7 +11,7 @@ function UserDataForm({ selectedUser, onSelectUser, onSaveData }) {
 
   const saveData = () => {
     console.log("Saving data:", selectedUser);
-    onSaveData(selectedUser);
+    onSaveData(selectedUser.id, selectedUser);
     window.alert("Changes saved successfully.");
   };
 
@@ -60,20 +60,8 @@ function UserDataForm({ selectedUser, onSelectUser, onSaveData }) {
             </svg>
             <form>
               <span>
-                <label className="form-label" htmlFor="department">
-                  Department:
-                </label>
-                <input
-                  id="department"
-                  type="text"
-                  name="department"
-                  value={selectedUser?.department || ""}
-                  onChange={handleInputChange}
-                />
-              </span>
-              <span>
                 <label className="form-label" htmlFor="job-title">
-                  Job Title:
+                  Должность:
                 </label>
                 <input
                   id="job-title"
@@ -84,8 +72,20 @@ function UserDataForm({ selectedUser, onSelectUser, onSaveData }) {
                 />
               </span>
               <span>
+                <label className="form-label" htmlFor="department">
+                Отдел:
+                </label>
+                <input
+                  id="department"
+                  type="text"
+                  name="department"
+                  value={selectedUser?.department || ""}
+                  onChange={handleInputChange}
+                />
+              </span>
+              <span>
                 <label className="form-label" htmlFor="company">
-                  Company:
+                Компания:
                 </label>
                 <input
                   id="company"
@@ -97,10 +97,10 @@ function UserDataForm({ selectedUser, onSelectUser, onSaveData }) {
               </span>
             </form>
           </div>
-          <button onClick={saveData}>Save</button>
+          <button id="save-button" onClick={saveData}>Save</button>
         </>
       ) : (
-        <div>No data to show</div>
+        <div className="no-data"><p>No data to show</p></div>
       )}
     </div>
   );
