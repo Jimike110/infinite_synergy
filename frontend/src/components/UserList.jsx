@@ -1,6 +1,17 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedUser } from "../redux/reducers/userReducer";
 
-function UserList({ users, onSelectUser, selectedUser, isLoading }) {
+function UserList() {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.user.users);
+  const selectedUser = useSelector((state) => state.user.selectedUser);
+  const isLoading = useSelector((state) => state.user.isLoading);
+
+  const handleUserClick = (user) => {
+    dispatch(setSelectedUser(user));
+  };
+
   return (
     <div className="user-list">
       {isLoading ? (
@@ -10,7 +21,7 @@ function UserList({ users, onSelectUser, selectedUser, isLoading }) {
           {users.map((user) => (
             <div
               key={user.id}
-              onClick={() => onSelectUser(user)}
+              onClick={() => handleUserClick(user)}
               className="user"
               style={{ backgroundColor: selectedUser && selectedUser.id === user.id ? "#82d1ff" : "" }}
             >

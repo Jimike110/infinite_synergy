@@ -1,6 +1,12 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedUser } from "../redux/reducers/userReducer";
 
-function UserDataForm({ selectedUser, onSelectUser, onSaveData }) {
+function UserDataForm({ onSelectUser, onSaveData }) {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.user.users);
+  const selectedUser = useSelector((state) => state.user.selectedUser);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     onSelectUser((prevUser) => ({
