@@ -17,7 +17,7 @@ function App() {
   const fetchUserData = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${appUrl}:3001/api/users?page=${page}&limit=1000`);
+      const response = await fetch(`https://legendary-barnacle-9rq6jr9pg7qcx4x4-3001.app.github.dev/api/users?page=${page}&limit=1000`);
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -43,7 +43,7 @@ function App() {
 
   const handleSaveData = async (userId, updatedFields) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${userId}`, {
+      const response = await fetch(`https://legendary-barnacle-9rq6jr9pg7qcx4x4-3001.app.github.dev/api/users/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

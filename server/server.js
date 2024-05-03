@@ -9,27 +9,12 @@ app.use(bodyParser.json());
 
 // Middleware to enable CORS
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', "http://localhost:3000");
+  res.setHeader('Access-Control-Allow-Origin', "https://legendary-barnacle-9rq6jr9pg7qcx4x4-3000.app.github.dev");
   res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
 
-// app.get('/api/users/:id', (req, res) => {
-//   const userId = parseInt(req.params.id);
-
-//   fs.readFile('./data/users.json', (err, data) => {
-//     if (err) {
-//       console.error('Error reading file:', err);
-//       res.status(500).json({ error: 'Failed to fetch user data' });
-//     } else {
-//       // const users = JSON.parse(data);
-//       const user = data.filter(user => user.id === userId)
-
-//       res.json(user);
-//     }
-//   });
-// });
 
 // Endpoint to fetch user data with pagination
 app.get('/api/users', (req, res) => {
