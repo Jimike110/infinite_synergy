@@ -12,7 +12,7 @@ This folder contains the backend server for the Infinite Synergy project. It is 
 
 1. Install dependencies: `npm install`
 2. Start the server: `npm start`
-3. Access the API endpoints at `http://localhost:3001/api`
+3. Access the API endpoints at `http://localhost:3001/api/users`
 
 ## Technologies Used
 
@@ -21,4 +21,4 @@ This folder contains the backend server for the Infinite Synergy project. It is 
 
 ## Contributors
 
-- [Your Name](https://github.com/your-profile)
+- [Michael Oladoye](https://github.com/jimike110)

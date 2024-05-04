@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     // Fetch user data when component mounts
     fetchUserData();
+    // eslint-disable-next-line
   }, [page]);
 
   const fetchUserData = async () => {

@@ -9,13 +9,15 @@ app.use(bodyParser.json());
 
 // Middleware to enable CORS
 app.use((req, res, next) => {
-  // Make sure to replace with your own origin url
-  res.setHeader('Access-Control-Allow-Origin', "http://localhost:3000");
+  // Allow requests from the origin specified in the request header
+  const origin = req.get('Origin');
+  if (origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-
 
 // Endpoint to fetch user data with pagination
 app.get('/api/users', (req, res) => {
