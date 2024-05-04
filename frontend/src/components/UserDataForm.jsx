@@ -3,20 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedUser } from "../redux/reducers/userReducer";
 
 function UserDataForm({ onSelectUser, onSaveData }) {
-  const dispatch = useDispatch();
+  const dispatch
+   = useDispatch();
   const users = useSelector((state) => state.user.users);
   const selectedUser = useSelector((state) => state.user.selectedUser);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    onSelectUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
+    dispatch(setSelectedUser({ ...selectedUser, [name]: value }));
   };
 
   const saveData = () => {
     console.log("Saving data:", selectedUser);
+    // dispatch(updateUserData(selectedUser.id, selectedUser));
     onSaveData(selectedUser.id, selectedUser);
     window.alert("Changes saved successfully.");
   };
@@ -65,6 +64,59 @@ function UserDataForm({ onSelectUser, onSaveData }) {
               </g>
             </svg>
             <form>
+              
+            <span>
+                <label className="form-label" htmlFor="first-name">
+                Имя:
+                </label>
+                <input
+                  id="first-name"
+                  type="text"
+                  name="first-name"
+                  value={selectedUser?.firstName || ""}
+                  onChange={handleInputChange}
+                  placeholder="не указано"
+                />
+              </span>
+              <span>
+                <label className="form-label" htmlFor="surname">
+                Фамилия:
+                </label>
+                <input
+                  id="surname"
+                  type="text"
+                  name="surname"
+                  value={selectedUser?.surname || ""}
+                  onChange={handleInputChange}
+                  placeholder="не указано"
+                />
+              </span>
+              <span>
+                <label className="form-label" htmlFor="age">
+                Возраст:
+                </label>
+                <input
+                  id="age"
+                  type="number"
+                  name="age"
+                  value={selectedUser?.age || ""}
+                  onChange={handleInputChange}
+                  placeholder="не указано"
+                />
+              </span>
+              <span>
+                <label className="form-label" htmlFor="email">
+                Электронная почта:
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={selectedUser?.email || ""}
+                  onChange={handleInputChange}
+                  placeholder="не указано"
+                />
+              </span>
               <span>
                 <label className="form-label" htmlFor="job-title">
                   Должность:
@@ -75,6 +127,7 @@ function UserDataForm({ onSelectUser, onSaveData }) {
                   name="jobTitle"
                   value={selectedUser?.jobTitle || ""}
                   onChange={handleInputChange}
+                  placeholder="не указано"
                 />
               </span>
               <span>
@@ -87,6 +140,7 @@ function UserDataForm({ onSelectUser, onSaveData }) {
                   name="department"
                   value={selectedUser?.department || ""}
                   onChange={handleInputChange}
+                  placeholder="не указано"
                 />
               </span>
               <span>
@@ -99,6 +153,7 @@ function UserDataForm({ onSelectUser, onSaveData }) {
                   name="company"
                   value={selectedUser?.company || ""}
                   onChange={handleInputChange}
+                  placeholder="не указано"
                 />
               </span>
             </form>

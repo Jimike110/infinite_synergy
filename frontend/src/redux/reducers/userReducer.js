@@ -4,6 +4,7 @@ const initialState = {
     users: [],
     selectedUser: null,
     isLoading: false,
+    page: 1,
 };
 
 const userSlice = createSlice({
@@ -17,18 +18,21 @@ const userSlice = createSlice({
         setSelectedUser(state, action) {
             state.selectedUser = action.payload;
         },
-        updateUserData(state, action) {
-            const { userId, updatedFields } = action.payload;
-            const index = state.users.findIndex(user => user.id === userId);
-            if (index !== -1) {
-                state.users[index] = { ...state.users[index], ...updatedFields };
-            }
-        },
+        // updateUserData(state, action) {
+        //     const { userId, updatedFields } = action.payload;
+        //     const index = state.users.findIndex(user => user.id === userId);
+        //     if (index !== -1) {
+        //         state.users[index] = { ...state.users[index], ...updatedFields };
+        //     }
+        // },
         setIsLoading(state, action) {
             state.isLoading = action.payload;
-        }
+        },
+        setPage(state, action) {
+            state.page = action.payload;
+        },
     },
 });
 
-export const { setUsers, setSelectedUser, updateUserData, setIsLoading } = userSlice.actions;
+export const { setUsers, setSelectedUser, setIsLoading, setPage } = userSlice.actions;
 export default userSlice.reducer;
