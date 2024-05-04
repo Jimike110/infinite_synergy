@@ -18,13 +18,6 @@ const userSlice = createSlice({
         setSelectedUser(state, action) {
             state.selectedUser = action.payload;
         },
-        // updateUserData(state, action) {
-        //     const { userId, updatedFields } = action.payload;
-        //     const index = state.users.findIndex(user => user.id === userId);
-        //     if (index !== -1) {
-        //         state.users[index] = { ...state.users[index], ...updatedFields };
-        //     }
-        // },
         setIsLoading(state, action) {
             state.isLoading = action.payload;
         },

@@ -2,10 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedUser } from "../redux/reducers/userReducer";
 
-function UserDataForm({ onSelectUser, onSaveData }) {
-  const dispatch
-   = useDispatch();
-  const users = useSelector((state) => state.user.users);
+function UserDataForm({ onSaveData }) {
+  const dispatch = useDispatch();
   const selectedUser = useSelector((state) => state.user.selectedUser);
 
   const handleInputChange = (e) => {
@@ -15,7 +13,6 @@ function UserDataForm({ onSelectUser, onSaveData }) {
 
   const saveData = () => {
     console.log("Saving data:", selectedUser);
-    // dispatch(updateUserData(selectedUser.id, selectedUser));
     onSaveData(selectedUser.id, selectedUser);
     window.alert("Changes saved successfully.");
   };
@@ -66,7 +63,7 @@ function UserDataForm({ onSelectUser, onSaveData }) {
             <form>
               <span>
                 <label className="form-label" htmlFor="age">
-                Возраст:
+                  Возраст:
                 </label>
                 <input
                   id="age"
@@ -79,7 +76,7 @@ function UserDataForm({ onSelectUser, onSaveData }) {
               </span>
               <span>
                 <label className="form-label" htmlFor="email">
-                Электронная почта:
+                  Электронная почта:
                 </label>
                 <input
                   id="email"
@@ -105,7 +102,7 @@ function UserDataForm({ onSelectUser, onSaveData }) {
               </span>
               <span>
                 <label className="form-label" htmlFor="department">
-                Отдел:
+                  Отдел:
                 </label>
                 <input
                   id="department"
@@ -118,7 +115,7 @@ function UserDataForm({ onSelectUser, onSaveData }) {
               </span>
               <span>
                 <label className="form-label" htmlFor="company">
-                Компания:
+                  Компания:
                 </label>
                 <input
                   id="company"
@@ -131,10 +128,14 @@ function UserDataForm({ onSelectUser, onSaveData }) {
               </span>
             </form>
           </div>
-          <button id="save-button" onClick={saveData}>Save</button>
+          <button id="save-button" onClick={saveData}>
+            Save
+          </button>
         </>
       ) : (
-        <div className="no-data"><p>No data to show</p></div>
+        <div className="no-data">
+          <p>No data to show</p>
+        </div>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers, setIsLoading, setSelectedUser, setPage } from "./redux/reducers/userReducer";
 import UserDataForm from "./components/UserDataForm";
@@ -6,10 +6,8 @@ import UserList from "./components/UserList";
 
 function App() {
   const users = useSelector((state) => state.user.users);
-  const selectedUser = useSelector((state) => state.user.selectedUser);
   const isLoading = useSelector((state) => state.user.isLoading);
   const dispatch = useDispatch();
-  // const [page, setPage] = useState(1);
   const page = useSelector((state) => state.user.page);
   const limit = 1000;
   const appUrl = "http://" + window.location.hostname;
@@ -22,7 +20,7 @@ function App() {
   const fetchUserData = async () => {
     dispatch(setIsLoading(true));
     try {
-      const response = await fetch(`https://legendary-barnacle-9rq6jr9pg7qcx4x4-3001.app.github.dev/api/users?page=${page}&limit=${limit}`);
+      const response = await fetch(`${appUrl}:3001/api/users?page=${page}&limit=${limit}`);
       const data = await response.json();
       dispatch(setUsers(data));
     } catch (error) {
@@ -42,13 +40,9 @@ function App() {
     dispatch(setSelectedUser(null));
   };
 
-  const handleSelectUser = (user) => {
-    dispatch(setSelectedUser(user));
-  };
-
   const handleSaveData = async (userId, updatedFields) => {
     try {
-      const response = await fetch(`https://legendary-barnacle-9rq6jr9pg7qcx4x4-3001.app.github.dev/api/users/${userId}`, {
+      const response = await fetch(`${appUrl}:3001/api/users/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -89,9 +83,7 @@ function App() {
         </div>
         <div className="right">
           <UserDataForm
-            selectedUser={selectedUser}
             onSaveData={handleSaveData}
-            onSelectUser={handleSelectUser}
           />
         </div>
       </div>
