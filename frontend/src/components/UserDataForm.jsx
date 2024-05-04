@@ -64,33 +64,6 @@ function UserDataForm({ onSelectUser, onSaveData }) {
               </g>
             </svg>
             <form>
-              
-            <span>
-                <label className="form-label" htmlFor="first-name">
-                Имя:
-                </label>
-                <input
-                  id="first-name"
-                  type="text"
-                  name="first-name"
-                  value={selectedUser?.firstName || ""}
-                  onChange={handleInputChange}
-                  placeholder="не указано"
-                />
-              </span>
-              <span>
-                <label className="form-label" htmlFor="surname">
-                Фамилия:
-                </label>
-                <input
-                  id="surname"
-                  type="text"
-                  name="surname"
-                  value={selectedUser?.surname || ""}
-                  onChange={handleInputChange}
-                  placeholder="не указано"
-                />
-              </span>
               <span>
                 <label className="form-label" htmlFor="age">
                 Возраст:
