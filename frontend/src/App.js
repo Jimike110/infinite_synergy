@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUsers, setIsLoading } from "./redux/reducers/userReducer";
+import { setUsers, setIsLoading, setPage, setSelectedUser } from "./redux/reducers/userReducer";
 import UserDataForm from "./components/UserDataForm";
 import UserList from "./components/UserList";
 
@@ -55,7 +55,16 @@ function App() {
       console.error('Ошибка обновления пользовательских данных:', error);
     }
   };  
-  
+
+  const nextPage = () => {
+    dispatch(setPage(page + 1));
+    dispatch(setSelectedUser(null));
+  };
+
+  const prevPage = () => {
+    dispatch(setPage(page - 1));
+    dispatch(setSelectedUser(null));
+  };
 
   return (
     <div className="App">
@@ -65,6 +74,10 @@ function App() {
         <div className="loader"><p>Загрузка...</p></div>
       ) : (<div className="list">
           <UserList />
+          <div className="pagination-buttons">
+          <button className="paginate-button prev" onClick={prevPage} disabled={page === 1}>Previous Page</button>
+          <button className="paginate-button next" disabled={users.length < limit || users.length === 0} onClick={nextPage}>Next Page</button>
+          </div>
           </div>
       ) }
         </div>
