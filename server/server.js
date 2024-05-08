@@ -3,14 +3,14 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 
 // Middleware to enable CORS
 app.use((req, res, next) => {
   // Allow requests from the origin specified in the request header
-  const origin = req.get('Origin');
+  const origin = "https://infinite-synergy-frontend.onrender.com";
   if (origin) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
