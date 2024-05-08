@@ -1,3 +1,4 @@
+/* Base styles for all devices */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -8,9 +9,10 @@ body {
   box-sizing: border-box;
 }
 
-* {
+*, *::before, *::after {
   padding: 0;
   margin: 0;
+  box-sizing: inherit;
 }
 
 .App {
@@ -20,34 +22,37 @@ body {
 
 .container {
   display: flex;
-  flex-direction: row;
-  /* justify-content: center; */
+  flex-direction: column;
 }
 
-.left {
-  width: 35%;
-  overflow-y: auto;
+.left, .right {
+  width: 100%;
+  overflow: hidden;
   border: 1px solid black;
   height: 100vh;
 }
+
 .list-and-pagination {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
+
 .user-list {
   padding: 10px 0;
+  overflow-y: scroll;
 }
+
 .pagination-buttons {
   padding: 10px 0;
-  position: sticky;
-  bottom: 0;
+  position: relative;
   height: 40px;
-  display: flex !important;
-  z-index: 999;
+  display: flex;
   justify-content: space-evenly;
   background-color: white;
   align-items: center;
 }
+
 .paginate-button {
   padding: 6px;
   font-size: large;
@@ -56,30 +61,24 @@ body {
   width: 150px;
 }
 
-#user-svg {
-  width: 18px;
-  height: auto;
-}
 .user {
   line-height: 30px;
   display: flex;
 }
+
 .user:hover {
   background-color: #82d1ff;
   cursor: pointer;
 }
+
 .user > * {
   padding-left: 15px;
 }
+
 .user-name {
   font-size: 16px;
   font-weight: normal;
   vertical-align: middle;
-}
-
-.right {
-  overflow: hidden;
-  min-width: 65%;
 }
 
 .user-header {
@@ -90,11 +89,18 @@ body {
   align-items: center;
 }
 
-.user-data {
-  padding: 30px 50px;
+/* .user-data, form {
+  padding: 30px 20px;
   display: flex;
-  flex-direction: row;
-  gap: 30px;
+  flex-direction: column;
+} */
+
+.user-data {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: min(90%, 550px);
+  padding: 20px 30px;
 }
 
 .user-picture {
@@ -102,45 +108,35 @@ body {
   height: auto;
 }
 
-form {
+form > span, label {
   display: flex;
   flex-direction: column;
 }
 
-form > span {
-  display: flex;
-  flex-direction: row;
-}
-
 label {
-  width: 110px;
   color: grey;
   font-weight: 600;
+  margin: 8px 0 4px 0;
 }
 
 input {
   line-height: 24px;
   border: 1px solid rgba(0, 0, 0, 0.178);
   border-radius: 0;
-  width: 500px;
+  width: 100%; /* Adjusted for mobile */
   font-weight: 500;
   padding: 3px;
 }
+
 input:focus {
   border: 2px solid #82d1ff;
   outline: none;
 }
-input[class="user-name-input"] {
-  background-color: #82d1ff;
-  width: 300px;
-  border: 2px solid #3b94fa;
-  outline: none;
-}
 
 #save-button {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
+  position: sticky;
+  bottom: 20px;
+  right: 1px;
   background-color: #82d1ff;
   padding: 6px;
   font-size: large;
@@ -156,4 +152,42 @@ input[class="user-name-input"] {
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.close {
+  display: block;
+  width: 50px;
+  font-size: 25px;
+  height: auto;
+  font-weight: bold;
+  position: relative;
+  right: 35px;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 760px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .left {
+    width: 35%;
+  }
+
+  .right {
+    width: 65%;
+    display: block;
+  }
+
+  /* .user-data, form {
+    flex-direction: row;
+  } */
+
+  /* form > span {
+    flex-direction: row;
+  }
+
+  label {
+    margin-top: 0;
+  } */
 }

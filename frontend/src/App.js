@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUsers, setIsLoading, setSelectedUser, setPage } from "./redux/reducers/userReducer";
+import { setUsers, setIsLoading } from "./redux/reducers/userReducer";
 import UserDataForm from "./components/UserDataForm";
 import UserList from "./components/UserList";
 
@@ -29,16 +29,6 @@ function App() {
     } finally {
       dispatch(setIsLoading(false));
     }
-  };
-
-  const nextPage = () => {
-    dispatch(setPage(page + 1));
-    dispatch(setSelectedUser(null));
-  };
-
-  const prevPage = () => {
-    dispatch(setPage(page - 1));
-    dispatch(setSelectedUser(null));
   };
 
   const handleSaveData = async (userId, updatedFields) => {
@@ -73,12 +63,8 @@ function App() {
         <div className="left">
         {isLoading ? (
         <div className="loader"><p>Loading...</p></div>
-      ) : (<div className="list-and-pagination">
+      ) : (<div className="list">
           <UserList />
-          <div className="pagination-buttons">
-          <button className="paginate-button prev" onClick={prevPage} disabled={page === 1}>Previous Page</button>
-          <button className="paginate-button next" disabled={users.length < limit || users.length === 0} onClick={nextPage}>Next Page</button>
-          </div>
           </div>
       ) }
         </div>
