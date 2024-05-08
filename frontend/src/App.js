@@ -10,7 +10,7 @@ function App() {
   const dispatch = useDispatch();
   const page = useSelector((state) => state.user.page);
   const limit = 1000;
-  const serverUrl = "https://infinite-synergy.onrender.com";
+  const appUrl = "http://" + window.location.hostname;
 
   useEffect(() => {
     // Fetch user data when component mounts
@@ -21,7 +21,7 @@ function App() {
   const fetchUserData = async () => {
     dispatch(setIsLoading(true));
     try {
-      const response = await fetch(`${serverUrl}:10000/api/users?page=${page}&limit=${limit}`);
+      const response = await fetch(`${appUrl}:3001/api/users?page=${page}&limit=${limit}`);
       const data = await response.json();
       dispatch(setUsers(data));
     } catch (error) {
@@ -33,7 +33,7 @@ function App() {
 
   const handleSaveData = async (userId, updatedFields) => {
     try {
-      const response = await fetch(`${serverUrl}:10000/api/users/${userId}`, {
+      const response = await fetch(`${appUrl}:3001/api/users/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
