@@ -1,26 +1,26 @@
 # Frontend
 
-This folder contains the frontend application for the Infinite Synergy project. It is built with React and utilizes Redux Toolkit for state management.
+В этой папке находится фронтенд-приложение для проекта Infinite Synergy. Оно построено на React и использует Redux Toolkit для управления состояниями.
 
-## Folder Structure
+## Структура папки
 
-- **src**: Contains the source code for the React application.
-  - **components**: Contains reusable UI components.
-  - **redux**: Contains Redux-related files, including reducers and actions.
-  - **App.js**: Main entry point for the React application.
-- **public**: Contains static assets and HTML template.
+- **src**: Содержит исходный код приложения React.
+  - **components**: Содержит многократно используемые компоненты пользовательского интерфейса.
+  - **redux**: Содержит файлы, связанные с Redux, включая редукторы и действия.
+  - **App.js**: Основная точка входа для React-приложения.
+- **public**: Содержит статические активы и HTML-шаблон.
 
-## Getting Started
+## Начало работы
 
-1. Install dependencies: `npm install`
-2. Start the development server: `npm start`
-3. Access the application in your web browser at `http://localhost:3000`
+1. Установите зависимости: `npm install`.
+2. Запустите сервер разработки: `npm start`.
+3. Зайдите в приложение в веб-браузере по адресу `http://localhost:3000`.
 
-## Technologies Used
+## Используемые технологии
 
 - React
-- Redux Toolkit
+- Инструментарий Redux
 
-## Contributors
+## Авторы
 
 - [Michael Oladoye](https://github.com/jimike110)

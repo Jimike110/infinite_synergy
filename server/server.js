@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 
-// Middleware to enable CORS
+// Промежуточное ПО для включения CORS
 app.use((req, res, next) => {
-  // Allow requests from the origin specified in the request header
+  // Разрешить запросы из источника, указанного в заголовке запроса.
   const origin = req.get('Origin');
   if (origin) {
     res.setHeader('Access-Control-Allow-Origin', origin);
@@ -19,24 +19,24 @@ app.use((req, res, next) => {
   next();
 });
 
-// Endpoint to fetch user data with pagination
+// Конечная точка для получения пользовательских данных с пагинацией
 app.get('/api/users', (req, res) => {
-  // Get query parameters for pagination
-  const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
-  const limit = parseInt(req.query.limit) || 1000; // Default limit to 1000 users per page if not provided
+  // Получить параметры запроса для пагинации
+  const page = parseInt(req.query.page) || 1; // По умолчанию страница 1, если она не указана
+  const limit = parseInt(req.query.limit) || 1000; // Ограничение по умолчанию до 1000 пользователей на страницу, если это не указано
 
   fs.readFile('./data/users.json', (err, data) => {
     if (err) {
-      console.error('Error reading file:', err);
-      res.status(500).json({ error: 'Failed to fetch data' });
+      console.error('Ошибка при чтении файла:', err);
+      res.status(500).json({ error: 'Не удалось получить данные.' });
     } else {
       const users = JSON.parse(data);
 
-      // Calculate start and end indices for pagination
+      // Рассчитать начальный и конечный индексы для нумерации страниц
       const startIndex = (page - 1) * limit;
       const endIndex = startIndex + limit;
 
-      // Get users for the current page
+      // Получить пользователей для текущей страницы
       const paginatedUsers = users.slice(startIndex, endIndex);
 
       res.json(paginatedUsers);
@@ -44,15 +44,15 @@ app.get('/api/users', (req, res) => {
   });
 });
 
-// Endpoint to update individual user data
+// Конечная точка для обновления индивидуальных данных пользователя
 app.patch('/api/users/:id', (req, res) => {
   const userId = parseInt(req.params.id);
   const updatedFields = req.body;
 
   fs.readFile('./data/users.json', (err, data) => {
     if (err) {
-      console.error('Error reading file:', err);
-      res.status(500).json({ error: 'Failed to update user data' });
+      console.error('Ошибка при чтении файла:', err);
+      res.status(500).json({ error: 'Не удалось получить данные.' });
     } else {
       let users = JSON.parse(data);
       const index = users.findIndex(user => user.id === userId);
@@ -60,15 +60,15 @@ app.patch('/api/users/:id', (req, res) => {
         users[index] = { ...users[index], ...updatedFields };
         fs.writeFile('./data/users.json', JSON.stringify(users), (err) => {
           if (err) {
-            console.error('Error writing to file:', err);
-            res.status(500).json({ error: 'Failed to update user data' });
+            console.error('Ошибка записи в файл:', err);
+            res.status(500).json({ error: 'Не удалось получить данные.' });
           } else {
-            console.log('User data updated successfully');
-            res.json({ message: 'User data updated successfully' });
+            console.log('Данные пользователя успешно обновлены');
+            res.json({ message: 'Данные пользователя успешно обновлены' });
           }
         });
       } else {
-        res.status(404).json({ error: 'User not found' });
+        res.status(404).json({ error: 'Пользователь не найден' });
       }
     }
   });
@@ -76,5 +76,5 @@ app.patch('/api/users/:id', (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Сервер работает на порту ${PORT}`);
 });

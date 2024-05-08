@@ -41,7 +41,7 @@ function App() {
         body: JSON.stringify(updatedFields),
       });
       const data = await response.json();
-      console.log('User data updated:', data);
+      console.log('Данные пользователя обновлены:', data);
       
       // Update the user data in the users array
       const updatedUsers = users.map(user => {
@@ -52,7 +52,7 @@ function App() {
       });
       dispatch(setUsers(updatedUsers));
     } catch (error) {
-      console.error('Error updating user data:', error);
+      console.error('Ошибка обновления пользовательских данных:', error);
     }
   };  
   
@@ -62,7 +62,7 @@ function App() {
       <div className="container">
         <div className="left">
         {isLoading ? (
-        <div className="loader"><p>Loading...</p></div>
+        <div className="loader"><p>Загрузка...</p></div>
       ) : (<div className="list">
           <UserList />
           </div>

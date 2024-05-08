@@ -15,7 +15,7 @@ function UserList() {
   return (
     <div className="user-list">
       {isLoading ? (
-        <p>Loading...</p>
+        <p>Загрузка...</p>
       ) : (
         <>
           {users.map((user) => (

@@ -1,24 +1,24 @@
-# Server
+# Сервер
 
-This folder contains the backend server for the Infinite Synergy project. It is implemented with Node.js and Express, providing a RESTful API for managing user data.
+В этой папке находится бэкенд-сервер проекта Infinite Synergy. Он реализован с помощью Node.js и Express, предоставляя RESTful API для управления данными пользователей.
 
-## Folder Structure
+## Структура папки
 
-- **data**: Contains the source code for the server application.
-  - `users.json`: Contains the source data for the project. Large file containing a million users (1 000 000)
-- **server.js**: Main entry point for the server application.
+- **data**: Содержит исходный код серверного приложения.
+  - `users.json`: Содержит исходные данные проекта. Большой файл, содержащий миллион пользователей (1 000 000)
+- **server.js**: Основная точка входа для серверного приложения.
 
-## Getting Started
+## Начало работы
 
-1. Install dependencies: `npm install`
-2. Start the server: `npm start`
-3. Access the API endpoints at `http://localhost:3001/api/users`
+1. Установите зависимости: `npm install`.
+2. Запустите сервер: `npm start`.
+3. Получите доступ к конечным точкам API по адресу `http://localhost:3001/api/users`.
 
-## Technologies Used
+## Используемые технологии
 
 - Node.js
 - Express
 
-## Contributors
+## Авторы
 
 - [Michael Oladoye](https://github.com/jimike110)

@@ -1,15 +1,18 @@
-/* Base styles for all devices */
+/* Базовые стили для всех устройств */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: inherit;
@@ -20,20 +23,18 @@ body {
   height: 100vh;
 }
 
-/* .container {
-  display: flex;
-  flex-direction: column;
-} */
-
-.left, .right {
+.left,
+.right {
   width: 100%;
   overflow: hidden;
   border: 1px solid black;
   height: 100vh;
 }
+
 .right {
   display: none;
 }
+
 .mobile-data-form {
   display: block;
   position: absolute;
@@ -104,12 +105,6 @@ body {
   align-items: center;
 }
 
-/* .user-data, form {
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-} */
-
 .user-data {
   display: flex;
   flex-direction: column;
@@ -123,7 +118,8 @@ body {
   height: auto;
 }
 
-form > span, label {
+form > span,
+label {
   display: flex;
   flex-direction: column;
 }
@@ -138,7 +134,7 @@ input {
   line-height: 24px;
   border: 1px solid rgba(0, 0, 0, 0.178);
   border-radius: 0;
-  width: 100%; /* Adjusted for mobile */
+  width: 100%;
   font-weight: 500;
   padding: 3px;
 }
@@ -160,7 +156,8 @@ input:focus {
   width: 100px;
 }
 
-.loader, .no-data {
+.loader,
+.no-data {
   font-size: 26px;
   font-weight: 600;
   display: flex;
@@ -179,7 +176,7 @@ input:focus {
   right: 35px;
 }
 
-/* Media queries for larger screens */
+/* Медиа-запросы для больших экранов */
 @media (min-width: 760px) {
   .container {
     flex-direction: row;
@@ -190,7 +187,8 @@ input:focus {
     width: 35%;
   }
 
-  .right, .mobile-data-form {
+  .right,
+  .mobile-data-form {
     width: 65%;
     display: block;
   }
@@ -214,12 +212,4 @@ input:focus {
   .close {
     display: none;
   }
-
-  /* form > span {
-    flex-direction: row;
-  }
-
-  label {
-    margin-top: 0;
-  } */
 }

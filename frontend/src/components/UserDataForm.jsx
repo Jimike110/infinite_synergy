@@ -12,9 +12,9 @@ function UserDataForm({ onSaveData }) {
   };
 
   const saveData = () => {
-    console.log("Saving data:", selectedUser);
+    console.log("Сохранение данных:", selectedUser);
     onSaveData(selectedUser.id, selectedUser);
-    window.alert("Changes saved successfully.");
+    window.alert("Изменения успешно сохранены. Подождите, пока изменения отразятся.");
   };
 
   return (
@@ -129,12 +129,12 @@ function UserDataForm({ onSaveData }) {
             </form>
           </div>
           <button id="save-button" onClick={saveData}>
-            Save
+          Сохранить
           </button>
         </>
       ) : (
         <div className="no-data">
-          <p>No data to show</p>
+          <p>Нет данных, чтобы показать</p>
         </div>
       )}
     </div>
