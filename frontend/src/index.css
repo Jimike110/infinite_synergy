@@ -20,16 +20,27 @@ body {
   height: 100vh;
 }
 
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .left, .right {
   width: 100%;
   overflow: hidden;
   border: 1px solid black;
   height: 100vh;
+}
+.right {
+  display: none;
+}
+.mobile-data-form {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 100000;
 }
 
 .list-and-pagination {
@@ -69,6 +80,10 @@ body {
 .user:hover {
   background-color: #82d1ff;
   cursor: pointer;
+}
+
+.user > svg {
+  width: 32px;
 }
 
 .user > * {
@@ -134,9 +149,9 @@ input:focus {
 }
 
 #save-button {
-  position: sticky;
+  position: absolute;
   bottom: 20px;
-  right: 1px;
+  right: 21px;
   background-color: #82d1ff;
   padding: 6px;
   font-size: large;
@@ -168,20 +183,37 @@ input:focus {
 @media (min-width: 760px) {
   .container {
     flex-direction: row;
+    display: flex;
   }
 
   .left {
     width: 35%;
   }
 
-  .right {
+  .right, .mobile-data-form {
     width: 65%;
     display: block;
   }
+  .mobile-data-form {
+    position: static;
+    display: block;
+  }
 
-  /* .user-data, form {
+  .user-data {
+    width: min(100%, 800px);
     flex-direction: row;
-  } */
+  }
+
+  .user-data > svg {
+    flex: 1;
+  }
+  .user-data > form {
+    flex: 5;
+  }
+
+  .close {
+    display: none;
+  }
 
   /* form > span {
     flex-direction: row;
