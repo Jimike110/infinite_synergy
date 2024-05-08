@@ -7,9 +7,12 @@ function UserList() {
   const users = useSelector((state) => state.user.users);
   const selectedUser = useSelector((state) => state.user.selectedUser);
   const isLoading = useSelector((state) => state.user.isLoading);
+  const userDataForm = document.querySelector(".right");
 
   const handleUserClick = (user) => {
     dispatch(setSelectedUser(user));
+    userDataForm.classList.add("mobile-data-form");
+    userDataForm.style.display = "block";
   };
 
   return (

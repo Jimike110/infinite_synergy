@@ -5,6 +5,7 @@ import { setSelectedUser } from "../redux/reducers/userReducer";
 function UserDataForm({ onSaveData }) {
   const dispatch = useDispatch();
   const selectedUser = useSelector((state) => state.user.selectedUser);
+  const userDataForm = document.querySelector(".right");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +23,7 @@ function UserDataForm({ onSaveData }) {
       {selectedUser ? (
         <>
           <span className="user-header">
+            <button className="close" onClick={() => userDataForm.style.display = "none" }>X</button>
             <input
               type="text"
               name="name"
